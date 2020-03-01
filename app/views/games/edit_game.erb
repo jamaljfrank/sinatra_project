@@ -1,1 +1,15 @@
-hello
+Edit Game 
+<form action="/games/<%= @game.id %>"" method="post">
+    <input type="hidden" name="_method" value="patch">
+
+    <label for="name">Game</label>
+    <input id="name" type="text" name="name" value="<%= @game.name %>">
+
+    <label for="system">System</label>
+    <input id="system" type="text" name="system" value="<%= @game.system %>">
+
+    <label for="players">Number of Players</label>
+    <input id="players" type="integer" name="players" value="<%= @game.players %>">
+
+    <input type="submit" value="submit">
+</form>
