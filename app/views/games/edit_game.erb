@@ -3,10 +3,10 @@ Edit Game
     <input type="hidden" name="_method" value="patch">
 
     <label for="name">Game</label>
-    <input id="name" type="text" name="name" value="<%= @game.name %>">
+    <input id="name" type="text" name="name" value="<%= @game.name %>" size="50">
 
-    <label for="system">System</label>
-    <input id="system" type="text" name="system" value="<%= @game.system %>">
+    <label for="console">Console</label>
+    <input id="console" type="text" name="console" value="<%= @game.console %>">
 
     <label for="players">Number of Players</label>
     <input id="players" type="integer" name="players" value="<%= @game.players %>">

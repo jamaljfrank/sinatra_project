@@ -1,14 +1,21 @@
-Your Game Collection
+
 
 <h1> Welcome, <%= @user.username %></h1>
-<h2> Games </h2>
+<h2> Your Game Collection </h2>
 
 <a href="/games/new"><button>Add Game</button></a>
-<a href="/games/:id/edit"><button>Edit Game</button></a>
+
 <a href="/logout"><button>Log Out</button></a>
 
 <% @games.each do |game| %>
-    <p><a <%=game.name%> ><%= game.name %> <%= game.players %> <%= game.user_id %></a> </p>
+<ol>
+    <p>
+    <a href="/games/<%=game.id%>/edit"><button>Edit Game</button></a>
+    <ul><b>Name:</b> <%=game.name %> </ul>
+    <ul><b>Console:</b> <%=game.console %> </ul>
+    <ul><b>Number of Players:</b> <%=game.players %> </ul> 
+    </p>
+</ol>
 <% end %>
 
 

@@ -20,6 +20,18 @@ class GamesContoller < ApplicationController
         erb :'games/edit_game'
     end
 
+    patch "/games/:id" do
+        verify_action
+        @game = Game.find(params[:id])
+        if !params[:name].empty? && !params[:console].empty? && !params[:players].empty?
+            @game.update(name: params[:name], console: params[:console], players: params[:players])
+            redirect "/games"
+        else
+            redirect "/games/#{@game.id}/edit"
+        end
+    end
+  
+
     post '/games' do
         user = User.find_by_id(session[:user_id])
         if !params[:name].empty?
@@ -28,13 +40,13 @@ class GamesContoller < ApplicationController
         else
             redirect "/games/new"
         end
-     end
-  end
+    end
+end
 
 
 
 
     
 
-end
+
 
