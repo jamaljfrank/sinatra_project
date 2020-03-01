@@ -20,8 +20,15 @@ class ApplicationController < Sinatra::Base
           @user ||= User.find(session[:user_id]) if session[:user_id]
         end
 
+        def verify_action
+            if !logged_in?
+                redirect '/login'
+            end
+        end
+
         def logout
             session.clear
+            redirect '/login'
         end
     end
 end

@@ -7,7 +7,7 @@ Your Game Collection
 <a href="/games/:id/edit"><button>Edit Game</button></a>
 <a href="/logout"><button>Log Out</button></a>
 
-<% @game.each do |game| %>
+<% @games.each do |game| %>
     <p><a <%=game.name%> ><%= game.name %> <%= game.players %> <%= game.user_id %></a> </p>
 <% end %>
 

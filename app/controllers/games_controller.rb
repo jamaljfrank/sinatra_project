@@ -1,31 +1,23 @@
 class GamesContoller < ApplicationController 
 
     get '/games' do 
-        if logged_in?
-            @games = Game.all
-            erb :'games/user_library'
-        else
-            redirect to '/login'
-        end
+        verify_action
+        @games = Game.all
+        erb :'games/user_library'
     end
         
     
 
     get '/games/new' do 
-        if logged_in?
-            erb :'games/new_game'
-        else
-            redirect "/login"
-        end
+        verify_action
+        erb :'games/new_game'
     end
 
 
     get '/games/:id/edit' do 
-        if logged_in?
-            erb :'games/edit_game'
-        else
-            redirect "/login"
-        end
+        verify_action
+        @game = Game.find_by_id(params[:id])
+        erb :'games/edit_game'
     end
 
     post '/games' do
