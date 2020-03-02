@@ -41,7 +41,21 @@ class GamesContoller < ApplicationController
             redirect "/games/new"
         end
     end
+
+    delete "/games/:id" do
+        verify_action
+        @game = Game.find(params[:id])
+            if @game.user == current_user
+               @game.destroy
+               redirect "/games"
+            else
+               redirect "/games"
+            end
+        end
+    end
 end
+
+
 
 
 
