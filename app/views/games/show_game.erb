@@ -1,0 +1,27 @@
+<html>
+<h1> <%= @game.name%> </h1>
+
+    <h2>
+        <ul><b>For the</b> <%= @game.console%> </ul>
+        <ul><b>Number of Players: </b><%= @game.players%> </ul>
+        <a href="/login"><button>Home</button></a>
+<br>
+    </h2>
+
+<div class="btn-group">  
+
+
+<a href="/games/<%=@game.id%>/edit"><button>Edit Game</button></a>
+
+
+</div>
+
+
+<form action="/games/<%= @game.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Remove Game">
+</form>
+
+
+
+
