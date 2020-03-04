@@ -14,7 +14,7 @@ class GamesContoller < ApplicationController
     end
 
     post '/games/add' do
-        if !params[:name].blank? && !params[:console].blank? && !params[:players].blank?
+        if valid_input?
             game = Game.create(name: params[:name], console: params[:console], players: params[:players])
             game.user = current_user
             game.save
@@ -26,7 +26,7 @@ class GamesContoller < ApplicationController
 
     get "/games/:id/show" do
         verify_action
-        @game = Game.find(params[:id])
+        find_game
         
         erb :"games/show_game"
     end
@@ -34,14 +34,18 @@ class GamesContoller < ApplicationController
 
     get '/games/:id/edit' do 
         verify_action
-        @game = Game.find_by_id(params[:id])
-        erb :'games/edit_game'
+        find_game
+        if @game.user == current_user
+            erb :'games/edit_game'
+        else
+            redirect '/games'
+        end
     end
 
     patch "/games/:id" do
         verify_action
-        @game = Game.find(params[:id])
-        if !params[:name].empty? && !params[:console].empty? && !params[:players].empty?
+        find_game
+        if valid_input?
             @game.update(name: params[:name], console: params[:console], players: params[:players])
             redirect "/games"
         else
@@ -51,7 +55,7 @@ class GamesContoller < ApplicationController
   
 
     post '/games' do
-        user = User.find_by_id(session[:user_id])
+        user = User.find(session[:user_id])
         if !params[:name].empty?
             @game = Game.create(:params)
             redirect "/games"
@@ -62,8 +66,8 @@ class GamesContoller < ApplicationController
 
     delete "/games/:id" do
         verify_action
-        @game = Game.find(params[:id])
-        if 
+        find_game
+        if  @game.user == current_user
             @game.destroy
             redirect "/games"
         else

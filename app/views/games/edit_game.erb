@@ -1,15 +1,58 @@
 <h1>Edit Game</h1>
+
 <form action="/games/<%= @game.id %>" method="post">
     <input type="hidden" name="_method" value="patch">
 
-    <label for="name">Game</label>
-    <input id="name" type="text" name="name" value="<%= @game.name %>" size="50">
 
-    <label for="console">Console</label>
-    <input id="console" type="text" name="console" value="<%= @game.console %>">
+  <label for="name">Title:</label>
+  <input type="text" id="name" name="name" size="50" value="<%=@game.name%>">
+<br>
+<h2>Console:</h2>
+<ul>
+  <label for="switch">Nintendo Switch</label>
+  <input type="radio" id="switch" name="console" value="Nintendo Switch">
+</ul>
+<ul>
+  <label for="sony">Sony Playstation</label>
+  <input type="radio" id="sony" name="console" value="Sony Playstation">
+</ul>
+<ul>
+  <label for="xbox">Xbox</label>
+  <input type="radio" id="xbox" name="console" value="Xbox Series X">
+</ul>
+<ul>
+  <label for="pc">PC</label>
+  <input type="radio" id="pc" name="console" value="PC">
+</ul>
+<ul>
+  <label for="other">Other</label>
+  <input type="radio" id="other" name="console" value="Other">
+</ul>
+<br>
 
-    <label for="players">Number of Players</label>
-    <input id="players" type="integer" name="players" value="<%= @game.players %>">
-
-    <input type="submit" value="submit">
-</form>
+<h2>Number of Players:</h2>
+<ul>
+  <label for="1players">Single Player</label>
+  <input type="radio" id="1players" name="players" value="1">
+</ul>
+<ul>
+  <label for="2players">Two Players</label>
+  <input type="radio" id="2players" name="players" value="2">
+</ul>
+<ul>
+  <label for="3players">Three Players</label>
+  <input type="radio" id="3players" name="players" value="3">
+</ul>
+<ul>
+  <label for="4players">Four Players</label>
+  <input type="radio" id="4players" name="players" value="4">
+</ul>
+<ul>
+  <label for="5players">Five or More</label>
+  <input type="radio" id="5players" name="players" value="5">
+</ul>  
+<ul>
+  <button type="submit" value="submit">Finish</button>
+</ul>
+<a href="/games/<%= @game.id%>/show">Back</a>
+</form> 
