@@ -1,10 +1,11 @@
-<html>
+
+<h1> Owned by <%=@game.user.username%> </h1>
 <h1> <%= @game.name%> </h1>
 
     <h2>
         <ul><b>For the</b> <%= @game.console%> </ul>
         <ul><b>Number of Players: </b><%= @game.players%> </ul>
-        <a href="/login"><button>Home</button></a>
+        <a href="/games"><button>Home</button></a>
 <br>
     </h2>
 
