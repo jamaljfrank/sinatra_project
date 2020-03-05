@@ -1,3 +1,6 @@
+<% if flash(:error) %>
+  <%= flash[:error] %> 
+<% end %>
 <h1>Edit Game</h1>
 
 <form action="/games/<%= @game.id %>" method="post">

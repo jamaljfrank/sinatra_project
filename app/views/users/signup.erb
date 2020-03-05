@@ -1,3 +1,6 @@
+<% if flash(:error) %>
+  <%= flash[:error] %> 
+<% end %>
 <form action="/signup" method="post">
   <label for="username">Usermame</label>
   <input type="text" id="username" name="username">

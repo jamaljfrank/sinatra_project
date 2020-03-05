@@ -20,6 +20,7 @@ class UserController < ApplicationController
       session[:user_id] = @user.id
       redirect "/games"
     else
+      flash[:error] = "Invalid Sign Up Credentials"
       redirect "/signup"
     end
   end
@@ -34,6 +35,7 @@ class UserController < ApplicationController
       session[:user_id] = user.id
       redirect '/games'
     else
+      flash[:error] = "Invalid Login Credentials"
       redirect '/login'
     end
   end

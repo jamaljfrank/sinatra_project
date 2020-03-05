@@ -1,10 +1,15 @@
+require 'sinatra/base'
+require 'sinatra/flash'
+
 class ApplicationController < Sinatra::Base
 
+    
     configure do 
         set :public_folder, 'public'
         set :views, 'app/views'
         enable :sessions
         set :session_secret, "project"
+        register Sinatra::Flash
     end
 
     get '/' do 
@@ -22,6 +27,7 @@ class ApplicationController < Sinatra::Base
 
         def verify_action
             if !logged_in?
+                #Error message
                 redirect '/login'
             end
         end

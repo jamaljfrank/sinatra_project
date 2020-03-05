@@ -2,7 +2,6 @@ class GamesContoller < ApplicationController
 
     get '/games' do 
         verify_action
-        @games = Game.all
         erb :'games/user_library'
     end
         
@@ -20,6 +19,7 @@ class GamesContoller < ApplicationController
             game.save
             redirect "/games"
         else
+            flash[:error] = "Invalid game input"
             redirect "/games"
         end
     end
@@ -38,6 +38,7 @@ class GamesContoller < ApplicationController
         if @game.user == current_user
             erb :'games/edit_game'
         else
+            flash[:error] = "Unauthorized User"
             redirect '/games'
         end
     end
@@ -49,20 +50,13 @@ class GamesContoller < ApplicationController
             @game.update(name: params[:name], console: params[:console], players: params[:players])
             redirect "/games"
         else
+            flash[:error] = "Invalid Edit. Fill in all fields."
             redirect "/games/#{@game.id}/edit"
         end
     end
   
 
-    post '/games' do
-        user = User.find(session[:user_id])
-        if !params[:name].empty?
-            @game = Game.create(:params)
-            redirect "/games"
-        else
-            redirect "/games/new"
-        end
-    end
+    
 
     delete "/games/:id" do
         verify_action
@@ -71,6 +65,7 @@ class GamesContoller < ApplicationController
             @game.destroy
             redirect "/games"
         else
+            flash[:error] = "Unauthorized Deletion"
             redirect "/games"
         end
     end

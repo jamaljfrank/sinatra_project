@@ -1,4 +1,6 @@
-
+<% if flash(:error) %>
+  <%= flash[:error] %> 
+<% end %>
 <h1> Owned by <%=@game.user.username%> </h1>
 <h1> <%= @game.name%> </h1>
 
