@@ -27,7 +27,7 @@ class ApplicationController < Sinatra::Base
 
         def verify_action
             if !logged_in?
-                #Error message
+                flash[:error] = "Must be logged in."
                 redirect '/login'
             end
         end
