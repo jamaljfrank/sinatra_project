@@ -1,9 +1,17 @@
+<!doctype html>
+<html>
+  <head>
 <% if flash(:error) %>
   <%= flash[:error] %> 
 <% end %>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+ <body>
 <h1> Owned by <%=@game.user.username%> </h1>
 <h1> <%= @game.name%> </h1>
+<br>
 
+<br>
     <h2>
         <ul><b>For the</b> <%= @game.console%> </ul>
         <ul><b>Number of Players: </b><%= @game.players%> </ul>
@@ -24,7 +32,8 @@
     <input type="hidden" name="_method" value="delete">
     <input type="submit" value="Remove Game">
 </form>
-
+</body>
+</html>
 
 
 

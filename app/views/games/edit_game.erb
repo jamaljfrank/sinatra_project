@@ -1,6 +1,12 @@
+<!doctype html>
+<html>
+  <head>
 <% if flash(:error) %>
   <%= flash[:error] %> 
 <% end %>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+ <body>
 <h1>Edit Game</h1>
 
 <form action="/games/<%= @game.id %>" method="post">
@@ -10,6 +16,7 @@
   <label for="name">Title:</label>
   <input type="text" id="name" name="name" size="50" value="<%=@game.name%>">
 <br>
+
 <h2>Console:</h2>
 <ul>
   <label for="switch">Nintendo Switch</label>
@@ -59,3 +66,5 @@
 </ul>
 <a href="/games/<%= @game.id%>/show">Back</a>
 </form> 
+</body>
+</html>

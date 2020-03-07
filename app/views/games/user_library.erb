@@ -1,6 +1,12 @@
+<!doctype html>
+<html>
+  <head>
 <% if flash(:error) %>
   <%= flash[:error] %> 
 <% end %>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+ <body>
 
 <h1> Welcome, <%= @user.username %></h1>
 <h2> Your Game Collection </h2>
@@ -8,17 +14,26 @@
 <a href="/games/add"><button>Add Game</button></a>
 
 <a href="/logout"><button>Log Out</button></a>
+<div class="container">
+<div class="row">
 
-<% @user.games.each do |game| %>
-<ol>
+<div class="col-4">
+<div class="container">
+<% @user.games.sort_by(&:name).each do |game| %>
+
     <p>
-    
-    <ul><a href="/games/<%=game.id%>/show"><b><%=game.name%><b></a> 
+
+    <a href="/games/<%=game.id%>/show"><b><%=game.name%><b></a>
     <ul><b>Console:</b> <%=game.console %> </ul>
     <ul><b>Number of Players:</b> <%=game.players %> </ul>
-    
+      
     </p>
-</ol>
+
 <% end %>
+</div>
+</div>
+</div>
+</div>
 
-
+</body>
+</html>

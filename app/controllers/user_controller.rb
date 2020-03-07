@@ -12,6 +12,7 @@ class UserController < ApplicationController
   post '/signup' do
     user = User.find_by(:email => params[:email]) #account exists?
     if user
+      flash[:error] = "Email already exists."
       redirect '/login'
     elsif
       !params[:username].blank? && !params[:email].blank? && !params[:password].blank?

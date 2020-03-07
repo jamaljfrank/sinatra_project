@@ -1,12 +1,19 @@
+<!doctype html>
+<html>
+  <head>
 <% if flash(:error) %>
   <%= flash[:error] %> 
 <% end %>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+ <body>
 <h1>Add Game</h1>
 
 <form action="/games/add" method="post">
   <label for="name">Title:</label>
   <input type="text" id="name" name="name" size="50">
 <br>
+
 <h2>Console:</h2>
 <ul>
   <label for="switch">Nintendo Switch</label>
@@ -54,5 +61,7 @@
 <ul>
   <button type="submit" value="submit">Done</button>
 </ul>
-
+<a href="/games">Back</a>
 </form> 
+</body>
+</html>
