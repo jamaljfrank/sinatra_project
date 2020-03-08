@@ -10,7 +10,7 @@
 
 <h1> Welcome, <%= @user.username %></h1>
 <a href="/games/console"><button>Sort by Console</button></a>
-<a href="/games/players"><button>Sort by Players</button></a>
+<a href="/games"><button>Sort by Name</button></a>
 <h2> Your Game Collection </h2>
 
 <a href="/games/add"><button>Add Game</button></a>
@@ -22,7 +22,7 @@
 <div class="col">
 <div class="row">
 
-<% @user.games.sort_by(&:name).each do |game| %>
+<% @user.games.sort_by(&:players).each do |game| %>
 <p>
 <br>
    <ul> <a href="/games/<%=game.id%>/show"><b><%=game.name%><b></a></ul>
@@ -34,10 +34,3 @@
 </div>
 </div>
 </div>
-
-
-
-
-
-</body>
-</html>
