@@ -19,19 +19,20 @@
 
 
 <div class="container">
-<div class="col">
 <div class="row">
 
+
 <% @user.games.sort_by(&:name).each do |game| %>
+<div class="col-sm-4">
 <p>
 <br>
-   <ul> <a href="/games/<%=game.id%>/show"><b><%=game.name%><b></a></ul>
-   <ul> <b>Console:</b> <%=game.console %></ul>
-  <ul>  <b>Number of Players:</b> <%=game.players %> </ul>
+   <ul> <a href="/games/<%=game.id%>/show"><b><%=game.name%><b></a>[<%=game.console[0..3]%>][<%=game.players%>] </ul>
+  
   
     </p>
+    </div>
 <% end %>
-</div>
+
 </div>
 </div>
 

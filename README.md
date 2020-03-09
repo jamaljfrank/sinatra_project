@@ -4,21 +4,15 @@ My Game Collection is a Sinatra app for storing and sorting your video game titl
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+1. Clone from Github
 
-```bash
-pip install foobar
-```
+2. Run rake db:migrate
+
+3. Run Shotgun
 
 ## Usage
 
-```python
-import foobar
-
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
-```
+Create a User account by signing up and add your games by title, console and how many players it supports.
 
 ## Contributing
 
