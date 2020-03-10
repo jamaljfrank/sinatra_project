@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </head>
  <body>
+ <div class="col-md-4 col-md-offset-4">
 <h1> Owned by <%=@game.user.username%> </h1>
 <h1> <%= @game.name%> </h1>
 <br>
@@ -32,6 +33,7 @@
     <input type="hidden" name="_method" value="delete">
     <input type="submit" value="Remove Game">
 </form>
+</div>
 </body>
 </html>
 

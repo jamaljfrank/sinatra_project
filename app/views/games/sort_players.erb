@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </head>
  <body>
-
+<div class="col-md-4 col-md-offset-4">
 <h1> Welcome, <%= @user.username %></h1>
 <a href="/games/console"><button>Sort by Console</button></a>
 <a href="/games"><button>Sort by Name</button></a>
@@ -17,7 +17,7 @@
 
 <a href="/logout"><button>Log Out</button></a>
 
-
+</div>
 <div class="container">
 <div class="row">
 
@@ -35,3 +35,6 @@
 
 </div>
 </div>
+
+</body>
+</html>
