@@ -1,4 +1,4 @@
-class GamesContoller < ApplicationController 
+class GamesController < ApplicationController 
 
     get '/games' do 
         verify_action

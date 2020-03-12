@@ -44,10 +44,5 @@ class ApplicationController < Sinatra::Base
         def valid_input? #For games
             !params[:name].blank? && !params[:console].blank? && !params[:players].blank?
         end
-
-        
-            
-
-
     end
 end
