@@ -13,7 +13,7 @@
 <a href="/games/players"><button>Sort by Players</button></a>
 <h2> Your Game Collection </h2>
 
-<a href="/games/add"><button>Add Game</button></a>
+<a href="/games/new"><button>Add Game</button></a>
 
 <a href="/logout"><button>Log Out</button></a>
 </div>
@@ -26,7 +26,7 @@
 <div class="col-sm-4">
 <p>
 <br>
-   <ul> <a href="/games/<%=game.id%>/show"><b><%=game.name%><b></a> [<%=game.console[0..3]%>][<%=game.players%>] </ul>
+   <ul> <a href="/games/<%=game.id%>"><b><%=game.name%><b></a> [<%=game.console[0..3]%>][<%=game.players%>] </ul>
   
   
     </p>

@@ -2,7 +2,7 @@ class GamesController < ApplicationController
 
     get '/games' do 
         verify_action
-        erb :'games/user_library'
+        erb :'games/index'
     end
         
     get '/games/console' do
@@ -15,12 +15,12 @@ class GamesController < ApplicationController
         erb :'games/sort_players'
     end
 
-    get '/games/add' do 
+    get '/games/new' do 
         verify_action
-        erb :'games/add_game'
+        erb :'games/new'
     end
 
-    post '/games/add' do
+    post '/games/new' do
         if valid_input?
             game = Game.create(name: params[:name], console: params[:console], players: params[:players])
             game.user = current_user
@@ -32,11 +32,11 @@ class GamesController < ApplicationController
         end
     end
 
-    get "/games/:id/show" do
+    get "/games/:id" do
         verify_action
         find_game
         
-        erb :"games/show_game"
+        erb :"games/show"
     end
 
 
@@ -44,7 +44,7 @@ class GamesController < ApplicationController
         verify_action
         find_game
         if @game.user == current_user
-            erb :'games/edit_game'
+            erb :'games/edit'
         else
             flash[:error] = "Unauthorized User"
             redirect '/games'

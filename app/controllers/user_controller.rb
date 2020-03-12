@@ -5,7 +5,7 @@ class UserController < ApplicationController
     if logged_in?
       redirect '/games'
     else
-      erb :'/users/signup'
+      erb :'/users/new'
     end
   end
       
@@ -13,7 +13,7 @@ class UserController < ApplicationController
     user = User.find_by(:email => params[:email]) #account exists?
     if user
       flash[:error] = "Email already exists."
-      redirect '/login'
+      redirect '/'
     elsif
       !params[:username].blank? && !params[:email].blank? && !params[:password].blank?
       @user = User.create(params)
