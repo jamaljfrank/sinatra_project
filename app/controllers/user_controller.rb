@@ -10,13 +10,14 @@ class UserController < ApplicationController
   end
       
   post '/signup' do
+    
     user = User.find_by(:email => params[:email]) #account exists?
     if user
       flash[:error] = "Email already exists."
       redirect '/'
-    elsif
-      
-      @user = User.create!(params)
+    elsif 
+      valid_user?
+      @user = User.create(params)
       
       session[:user_id] = @user.id
       redirect "/games"

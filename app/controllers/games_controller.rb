@@ -4,7 +4,7 @@ class GamesController < ApplicationController
         verify_action
         erb :'games/index'
     end
-        
+
     get '/games/console' do
         verify_action
         erb :'games/sort_console'
@@ -22,8 +22,8 @@ class GamesController < ApplicationController
 
     post '/games/new' do
         
-        if valid_input?
-            current_user.games.create(name: params[:name], console: params[:console], players: params[:players])    
+        if valid_game?
+            current_user.games.create(game_params)    
             redirect "/games"
         else
             flash[:error] = "Invalid game input"
@@ -53,8 +53,8 @@ class GamesController < ApplicationController
     patch "/games/:id" do
         verify_action
         find_game
-        if valid_input?
-            @game.update(name: params[:name], console: params[:console], players: params[:players])
+        if valid_game?
+            @game.update(game_params)
             redirect "/games"
         else
             flash[:error] = "Invalid Edit. Fill in all fields."
