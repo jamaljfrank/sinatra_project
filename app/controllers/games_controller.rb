@@ -21,10 +21,9 @@ class GamesController < ApplicationController
     end
 
     post '/games/new' do
+        
         if valid_input?
-            game = Game.create(name: params[:name], console: params[:console], players: params[:players])
-            game.user = current_user
-            game.save
+            current_user.games.create(name: params[:name], console: params[:console], players: params[:players])    
             redirect "/games"
         else
             flash[:error] = "Invalid game input"

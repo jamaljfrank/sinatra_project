@@ -15,9 +15,9 @@ class UserController < ApplicationController
       flash[:error] = "Email already exists."
       redirect '/'
     elsif
-      !params[:username].blank? && !params[:email].blank? && !params[:password].blank?
-      @user = User.create(params)
-      @user.save
+      
+      @user = User.create!(params)
+      
       session[:user_id] = @user.id
       redirect "/games"
     else
