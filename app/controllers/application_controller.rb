@@ -37,12 +37,11 @@ class ApplicationController < Sinatra::Base
             redirect '/login'
         end
 
-        def valid_user?
-            !params[:username].blank? && !params[:email].blank? && !params[:password].blank?
-        end
-
-        def valid_game? 
-            !params[:name].blank? && !params[:console].blank? && !params[:players].blank?
+        def valid_game?(redirect_path)
+            if params[:name].blank? || params[:console].blank? || params[:players].blank?
+             flash[:error] = "Invalid game input"
+             redirect redirect_path
+            end
         end
 
         def find_game

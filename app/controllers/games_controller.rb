@@ -10,15 +10,13 @@ class GamesController < ApplicationController
         erb :'games/new'
     end
 
-    post '/games/new' do
+    post '/games' do
         
-        if valid_game?
-            current_user.games.create(game_params)    
-            redirect "/games"
-        else
-            flash[:error] = "Invalid game input"
-            redirect "/games"
-        end
+        valid_game?("/games")
+        current_user.games.create(game_params)    
+        redirect "/games"
+       
+        
     end
 
     get "/games/:id" do
@@ -43,13 +41,9 @@ class GamesController < ApplicationController
     patch "/games/:id" do
         verify_action
         find_game
-        if valid_game?
-            @game.update(game_params)
-            redirect "/games"
-        else
-            flash[:error] = "Invalid Edit. Fill in all fields."
-            redirect "/games/#{@game.id}/edit"
-        end
+        valid_game?("/games/#{@game.id}/edit")
+        @game.update(game_params)
+        redirect "/games"
     end
   
 

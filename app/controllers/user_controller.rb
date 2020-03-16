@@ -16,7 +16,7 @@ class UserController < ApplicationController
       flash[:error] = "Email already exists."
       redirect '/'
     elsif 
-      valid_user?
+      
       @user = User.create(params)
       
       session[:user_id] = @user.id
