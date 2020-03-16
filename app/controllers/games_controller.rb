@@ -1,18 +1,8 @@
 class GamesController < ApplicationController 
-
+    
     get '/games' do 
         verify_action
         erb :'games/index'
-    end
-
-    get '/games/console' do
-        verify_action
-        erb :'games/sort_console'
-    end
-
-    get '/games/players' do
-        verify_action
-        erb :'games/sort_players'
     end
 
     get '/games/new' do 

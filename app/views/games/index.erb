@@ -4,13 +4,17 @@
 <% if flash(:error) %>
   <%= flash[:error] %> 
 <% end %>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
 </head>
  <body>
-<div class="col-md-4 col-md-offset-4">
+<div class="col-md-4 col-md-offset-4" style="margin: auto; width: 50%">
 <h1> Welcome, <%= @user.username %></h1>
-<a href="/games/console"><button>Sort by Console</button></a>
-<a href="/games/players"><button>Sort by Players</button></a>
+
 <h2> Your Game Collection </h2>
 
 <a href="/games/new"><button>Add Game</button></a>
@@ -18,24 +22,33 @@
 <a href="/logout"><button>Log Out</button></a>
 </div>
 
-<div class="container">
-<div class="row">
-
-
-<% @user.games.sort_by(&:name).each do |game| %>
-<div class="col-sm-4">
-<p>
-<br>
-   <ul> <a href="/games/<%=game.id%>"><b><%=game.name%><b></a> [<%=game.console[0..3]%>][<%=game.players%>] </ul>
-  
-  
-    </p>
-    </div>
-<% end %>
-
+<table id="table"
+  data-toggle="table"
+  data-sort-class="table-active"
+  data-sortable="true"
+  style="margin: auto; width: 50%">
+    <thead>
+      <tr>
+        <th data-field="name" data-sortable="true">Name</th>
+        <th data-field="console" data-sortable="true">Console</th>
+        <th data-field="players" data-sortable="true">Number of Players</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @user.games.each do |game|%>
+      <tr>
+        <td><b><%=game.name%><br><em><a href="/games/<%=game.id%>">Edit/Delete</a></td>
+        <td><%=game.console%></td>
+        <td><%=game.players%></td>
+      </tr>
+      <%end%>
+    </tbody>
+  </table>
 </div>
-</div>
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
 
 
 
