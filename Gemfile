@@ -18,3 +18,4 @@ gem 'bcrypt'
 gem 'sinatra'
 gem 'tux'
 gem 'sinatra-flash'
+gem "activesupport", ">= 5.2.4.3"
